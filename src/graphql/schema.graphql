@@ -1,0 +1,1496 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type Beverage {
+  name: String!
+  category: CategoryEntityResponse
+  position: Int!
+  restaurant(filters: ComponentBeverageRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBeverageRestaurant]
+  options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BeverageEntity {
+  id: ID
+  attributes: Beverage
+}
+
+type BeverageEntityResponse {
+  data: BeverageEntity
+}
+
+type BeverageEntityResponseCollection {
+  data: [BeverageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BeverageFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  category: CategoryFiltersInput
+  position: IntFilterInput
+  options: OptionFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [BeverageFiltersInput]
+  or: [BeverageFiltersInput]
+  not: BeverageFiltersInput
+}
+
+input BeverageInput {
+  name: String
+  category: ID
+  position: Int
+  restaurant: [ComponentBeverageRestaurantInput]
+  options: [ID]
+}
+
+type BeverageRelationResponseCollection {
+  data: [BeverageEntity!]!
+}
+
+input BooleanFilterInput {
+  and: [Boolean]
+  or: [Boolean]
+  not: BooleanFilterInput
+  eq: Boolean
+  ne: Boolean
+  startsWith: Boolean
+  endsWith: Boolean
+  contains: Boolean
+  notContains: Boolean
+  containsi: Boolean
+  notContainsi: Boolean
+  gt: Boolean
+  gte: Boolean
+  lt: Boolean
+  lte: Boolean
+  null: Boolean
+  notNull: Boolean
+  in: [Boolean]
+  notIn: [Boolean]
+  between: [Boolean]
+}
+
+type Burger {
+  name: String!
+  position: Int!
+  category: CategoryEntityResponse
+  isYourTaste: Boolean
+  isChildrenMenu: Boolean
+  ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
+  description: String
+  restaurants(filters: ComponentBurguerRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBurguerRestaurant]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BurgerEntity {
+  id: ID
+  attributes: Burger
+}
+
+type BurgerEntityResponse {
+  data: BurgerEntity
+}
+
+type BurgerEntityResponseCollection {
+  data: [BurgerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BurgerFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  position: IntFilterInput
+  category: CategoryFiltersInput
+  isYourTaste: BooleanFilterInput
+  isChildrenMenu: BooleanFilterInput
+  ingredients: IngredientFiltersInput
+  description: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [BurgerFiltersInput]
+  or: [BurgerFiltersInput]
+  not: BurgerFiltersInput
+}
+
+input BurgerInput {
+  name: String
+  position: Int
+  category: ID
+  isYourTaste: Boolean
+  isChildrenMenu: Boolean
+  ingredients: [ID]
+  description: String
+  restaurants: [ComponentBurguerRestaurantInput]
+}
+
+type BurgerRelationResponseCollection {
+  data: [BurgerEntity!]!
+}
+
+type Category {
+  name: String!
+  position: Int!
+  image: UploadFileEntityResponse
+  asset: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CategoryEntity {
+  id: ID
+  attributes: Category
+}
+
+type CategoryEntityResponse {
+  data: CategoryEntity
+}
+
+type CategoryEntityResponseCollection {
+  data: [CategoryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CategoryFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  position: IntFilterInput
+  asset: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [CategoryFiltersInput]
+  or: [CategoryFiltersInput]
+  not: CategoryFiltersInput
+}
+
+input CategoryInput {
+  name: String
+  position: Int
+  image: ID
+  asset: String
+}
+
+type ComponentBeverageRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  available: Boolean!
+}
+
+input ComponentBeverageRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  available: BooleanFilterInput
+  and: [ComponentBeverageRestaurantFiltersInput]
+  or: [ComponentBeverageRestaurantFiltersInput]
+  not: ComponentBeverageRestaurantFiltersInput
+}
+
+input ComponentBeverageRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  available: Boolean
+}
+
+type ComponentBurguerRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  meat: OptionEntityResponse
+  meatPoint: OptionEntityResponse
+  bread: OptionEntityResponse
+  beverage: OptionEntityResponse
+  sides: OptionEntityResponse
+  available: Boolean!
+}
+
+input ComponentBurguerRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  meat: OptionFiltersInput
+  meatPoint: OptionFiltersInput
+  bread: OptionFiltersInput
+  beverage: OptionFiltersInput
+  sides: OptionFiltersInput
+  available: BooleanFilterInput
+  and: [ComponentBurguerRestaurantFiltersInput]
+  or: [ComponentBurguerRestaurantFiltersInput]
+  not: ComponentBurguerRestaurantFiltersInput
+}
+
+input ComponentBurguerRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  meat: ID
+  meatPoint: ID
+  bread: ID
+  beverage: ID
+  sides: ID
+  available: Boolean
+}
+
+type ComponentDessertRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  available: Boolean!
+}
+
+input ComponentDessertRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  available: BooleanFilterInput
+  and: [ComponentDessertRestaurantFiltersInput]
+  or: [ComponentDessertRestaurantFiltersInput]
+  not: ComponentDessertRestaurantFiltersInput
+}
+
+input ComponentDessertRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  available: Boolean
+}
+
+type ComponentIngredientRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+}
+
+input ComponentIngredientRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  and: [ComponentIngredientRestaurantFiltersInput]
+  or: [ComponentIngredientRestaurantFiltersInput]
+  not: ComponentIngredientRestaurantFiltersInput
+}
+
+input ComponentIngredientRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+}
+
+type ComponentItemRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  available: Boolean!
+}
+
+input ComponentItemRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  available: BooleanFilterInput
+  and: [ComponentItemRestaurantFiltersInput]
+  or: [ComponentItemRestaurantFiltersInput]
+  not: ComponentItemRestaurantFiltersInput
+}
+
+input ComponentItemRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  available: Boolean
+}
+
+type ComponentRestaurantPostalCode {
+  id: ID!
+  key: Int!
+}
+
+input ComponentRestaurantPostalCodeFiltersInput {
+  key: IntFilterInput
+  and: [ComponentRestaurantPostalCodeFiltersInput]
+  or: [ComponentRestaurantPostalCodeFiltersInput]
+  not: ComponentRestaurantPostalCodeFiltersInput
+}
+
+input ComponentRestaurantPostalCodeInput {
+  id: ID
+  key: Int
+}
+
+type ComponentRestaurantSchedule {
+  id: ID!
+  opening: Time!
+  closing: Time!
+  days(filters: DayFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DayRelationResponseCollection
+}
+
+input ComponentRestaurantScheduleFiltersInput {
+  opening: TimeFilterInput
+  closing: TimeFilterInput
+  days: DayFiltersInput
+  and: [ComponentRestaurantScheduleFiltersInput]
+  or: [ComponentRestaurantScheduleFiltersInput]
+  not: ComponentRestaurantScheduleFiltersInput
+}
+
+input ComponentRestaurantScheduleInput {
+  id: ID
+  opening: Time
+  closing: Time
+  days: [ID]
+}
+
+type ComponentSaladRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  available: Boolean!
+}
+
+input ComponentSaladRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  available: BooleanFilterInput
+  and: [ComponentSaladRestaurantFiltersInput]
+  or: [ComponentSaladRestaurantFiltersInput]
+  not: ComponentSaladRestaurantFiltersInput
+}
+
+input ComponentSaladRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  available: Boolean
+}
+
+type ComponentSandwichRestaurants {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  bread: OptionEntityResponse
+  price: Float!
+  beverage: OptionEntityResponse
+  side: OptionEntityResponse
+  available: Boolean!
+}
+
+input ComponentSandwichRestaurantsFiltersInput {
+  restaurant: RestaurantFiltersInput
+  bread: OptionFiltersInput
+  price: FloatFilterInput
+  beverage: OptionFiltersInput
+  side: OptionFiltersInput
+  available: BooleanFilterInput
+  and: [ComponentSandwichRestaurantsFiltersInput]
+  or: [ComponentSandwichRestaurantsFiltersInput]
+  not: ComponentSandwichRestaurantsFiltersInput
+}
+
+input ComponentSandwichRestaurantsInput {
+  id: ID
+  restaurant: ID
+  bread: ID
+  price: Float
+  beverage: ID
+  side: ID
+  available: Boolean
+}
+
+type ComponentSideRestaurant {
+  id: ID!
+  restaurant: RestaurantEntityResponse
+  price: Float!
+  available: Boolean!
+}
+
+input ComponentSideRestaurantFiltersInput {
+  restaurant: RestaurantFiltersInput
+  price: FloatFilterInput
+  available: BooleanFilterInput
+  and: [ComponentSideRestaurantFiltersInput]
+  or: [ComponentSideRestaurantFiltersInput]
+  not: ComponentSideRestaurantFiltersInput
+}
+
+input ComponentSideRestaurantInput {
+  id: ID
+  restaurant: ID
+  price: Float
+  available: Boolean
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input DateTimeFilterInput {
+  and: [DateTime]
+  or: [DateTime]
+  not: DateTimeFilterInput
+  eq: DateTime
+  ne: DateTime
+  startsWith: DateTime
+  endsWith: DateTime
+  contains: DateTime
+  notContains: DateTime
+  containsi: DateTime
+  notContainsi: DateTime
+  gt: DateTime
+  gte: DateTime
+  lt: DateTime
+  lte: DateTime
+  null: Boolean
+  notNull: Boolean
+  in: [DateTime]
+  notIn: [DateTime]
+  between: [DateTime]
+}
+
+type Day {
+  key: Int!
+  day: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type DayEntity {
+  id: ID
+  attributes: Day
+}
+
+type DayEntityResponse {
+  data: DayEntity
+}
+
+type DayEntityResponseCollection {
+  data: [DayEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DayFiltersInput {
+  id: IDFilterInput
+  key: IntFilterInput
+  day: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [DayFiltersInput]
+  or: [DayFiltersInput]
+  not: DayFiltersInput
+}
+
+input DayInput {
+  key: Int
+  day: String
+}
+
+type DayRelationResponseCollection {
+  data: [DayEntity!]!
+}
+
+type Dessert {
+  name: String!
+  position: Int!
+  category: CategoryEntityResponse
+  restaurant(filters: ComponentDessertRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDessertRestaurant]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type DessertEntity {
+  id: ID
+  attributes: Dessert
+}
+
+type DessertEntityResponse {
+  data: DessertEntity
+}
+
+type DessertEntityResponseCollection {
+  data: [DessertEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DessertFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  position: IntFilterInput
+  category: CategoryFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [DessertFiltersInput]
+  or: [DessertFiltersInput]
+  not: DessertFiltersInput
+}
+
+input DessertInput {
+  name: String
+  position: Int
+  category: ID
+  restaurant: [ComponentDessertRestaurantInput]
+}
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+input FloatFilterInput {
+  and: [Float]
+  or: [Float]
+  not: FloatFilterInput
+  eq: Float
+  ne: Float
+  startsWith: Float
+  endsWith: Float
+  contains: Float
+  notContains: Float
+  containsi: Float
+  notContainsi: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  null: Boolean
+  notNull: Boolean
+  in: [Float]
+  notIn: [Float]
+  between: [Float]
+}
+
+union GenericMorph = ComponentBeverageRestaurant | ComponentBurguerRestaurant | ComponentDessertRestaurant | ComponentIngredientRestaurant | ComponentItemRestaurant | ComponentRestaurantPostalCode | ComponentRestaurantSchedule | ComponentSaladRestaurant | ComponentSandwichRestaurants | ComponentSideRestaurant | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Beverage | Burger | Category | Day | Dessert | Ingredient | Item | Option | Restaurant | Salad | Sandwich | Side
+
+type I18NLocale {
+  name: String
+  code: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  id: ID
+  attributes: I18NLocale
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input I18NLocaleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [I18NLocaleFiltersInput]
+  or: [I18NLocaleFiltersInput]
+  not: I18NLocaleFiltersInput
+}
+
+input IDFilterInput {
+  and: [ID]
+  or: [ID]
+  not: IDFilterInput
+  eq: ID
+  ne: ID
+  startsWith: ID
+  endsWith: ID
+  contains: ID
+  notContains: ID
+  containsi: ID
+  notContainsi: ID
+  gt: ID
+  gte: ID
+  lt: ID
+  lte: ID
+  null: Boolean
+  notNull: Boolean
+  in: [ID]
+  notIn: [ID]
+  between: [ID]
+}
+
+type Ingredient {
+  name: String!
+  inBurger: Boolean!
+  inSandwich: Boolean!
+  inSalad: Boolean!
+  burgers(filters: BurgerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BurgerRelationResponseCollection
+  sandwiches(filters: SandwichFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): SandwichRelationResponseCollection
+  salads(filters: SaladFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SaladRelationResponseCollection
+  restaurants(filters: ComponentIngredientRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentIngredientRestaurant]
+  sides(filters: SideFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SideRelationResponseCollection
+  side_ingredients(filters: SideFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SideRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type IngredientEntity {
+  id: ID
+  attributes: Ingredient
+}
+
+type IngredientEntityResponse {
+  data: IngredientEntity
+}
+
+type IngredientEntityResponseCollection {
+  data: [IngredientEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input IngredientFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  inBurger: BooleanFilterInput
+  inSandwich: BooleanFilterInput
+  inSalad: BooleanFilterInput
+  burgers: BurgerFiltersInput
+  sandwiches: SandwichFiltersInput
+  salads: SaladFiltersInput
+  sides: SideFiltersInput
+  side_ingredients: SideFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [IngredientFiltersInput]
+  or: [IngredientFiltersInput]
+  not: IngredientFiltersInput
+}
+
+input IngredientInput {
+  name: String
+  inBurger: Boolean
+  inSandwich: Boolean
+  inSalad: Boolean
+  burgers: [ID]
+  sandwiches: [ID]
+  salads: [ID]
+  restaurants: [ComponentIngredientRestaurantInput]
+  sides: [ID]
+  side_ingredients: [ID]
+}
+
+type IngredientRelationResponseCollection {
+  data: [IngredientEntity!]!
+}
+
+input IntFilterInput {
+  and: [Int]
+  or: [Int]
+  not: IntFilterInput
+  eq: Int
+  ne: Int
+  startsWith: Int
+  endsWith: Int
+  contains: Int
+  notContains: Int
+  containsi: Int
+  notContainsi: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  null: Boolean
+  notNull: Boolean
+  in: [Int]
+  notIn: [Int]
+  between: [Int]
+}
+
+type Item {
+  name: String!
+  restaurant(filters: ComponentItemRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentItemRestaurant]
+  options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ItemEntity {
+  id: ID
+  attributes: Item
+}
+
+type ItemEntityResponse {
+  data: ItemEntity
+}
+
+type ItemEntityResponseCollection {
+  data: [ItemEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ItemFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  options: OptionFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ItemFiltersInput]
+  or: [ItemFiltersInput]
+  not: ItemFiltersInput
+}
+
+input ItemInput {
+  name: String
+  restaurant: [ComponentItemRestaurantInput]
+  options: [ID]
+}
+
+type ItemRelationResponseCollection {
+  data: [ItemEntity!]!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+input JSONFilterInput {
+  and: [JSON]
+  or: [JSON]
+  not: JSONFilterInput
+  eq: JSON
+  ne: JSON
+  startsWith: JSON
+  endsWith: JSON
+  contains: JSON
+  notContains: JSON
+  containsi: JSON
+  notContainsi: JSON
+  gt: JSON
+  gte: JSON
+  lt: JSON
+  lte: JSON
+  null: Boolean
+  notNull: Boolean
+  in: [JSON]
+  notIn: [JSON]
+  between: [JSON]
+}
+
+type Mutation {
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  createBeverage(data: BeverageInput!): BeverageEntityResponse
+  updateBeverage(id: ID!, data: BeverageInput!): BeverageEntityResponse
+  deleteBeverage(id: ID!): BeverageEntityResponse
+  createBurger(data: BurgerInput!): BurgerEntityResponse
+  updateBurger(id: ID!, data: BurgerInput!): BurgerEntityResponse
+  deleteBurger(id: ID!): BurgerEntityResponse
+  createCategory(data: CategoryInput!): CategoryEntityResponse
+  updateCategory(id: ID!, data: CategoryInput!): CategoryEntityResponse
+  deleteCategory(id: ID!): CategoryEntityResponse
+  createDay(data: DayInput!): DayEntityResponse
+  updateDay(id: ID!, data: DayInput!): DayEntityResponse
+  deleteDay(id: ID!): DayEntityResponse
+  createDessert(data: DessertInput!): DessertEntityResponse
+  updateDessert(id: ID!, data: DessertInput!): DessertEntityResponse
+  deleteDessert(id: ID!): DessertEntityResponse
+  createIngredient(data: IngredientInput!): IngredientEntityResponse
+  updateIngredient(id: ID!, data: IngredientInput!): IngredientEntityResponse
+  deleteIngredient(id: ID!): IngredientEntityResponse
+  createItem(data: ItemInput!): ItemEntityResponse
+  updateItem(id: ID!, data: ItemInput!): ItemEntityResponse
+  deleteItem(id: ID!): ItemEntityResponse
+  createOption(data: OptionInput!): OptionEntityResponse
+  updateOption(id: ID!, data: OptionInput!): OptionEntityResponse
+  deleteOption(id: ID!): OptionEntityResponse
+  createRestaurant(data: RestaurantInput!): RestaurantEntityResponse
+  updateRestaurant(id: ID!, data: RestaurantInput!): RestaurantEntityResponse
+  deleteRestaurant(id: ID!): RestaurantEntityResponse
+  createSalad(data: SaladInput!): SaladEntityResponse
+  updateSalad(id: ID!, data: SaladInput!): SaladEntityResponse
+  deleteSalad(id: ID!): SaladEntityResponse
+  createSandwich(data: SandwichInput!): SandwichEntityResponse
+  updateSandwich(id: ID!, data: SandwichInput!): SandwichEntityResponse
+  deleteSandwich(id: ID!): SandwichEntityResponse
+  createSide(data: SideInput!): SideEntityResponse
+  updateSide(id: ID!, data: SideInput!): SideEntityResponse
+  deleteSide(id: ID!): SideEntityResponse
+  upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
+  multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  removeFile(id: ID!): UploadFileEntityResponse
+
+  """Create a new role"""
+  createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
+
+  """Update an existing role"""
+  updateUsersPermissionsRole(id: ID!, data: UsersPermissionsRoleInput!): UsersPermissionsUpdateRolePayload
+
+  """Delete an existing role"""
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+
+  """Create a new user"""
+  createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+
+  """Update an existing user"""
+  updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+
+  """Update an existing user"""
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+
+  """Register a user"""
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+
+  """Request a reset password token"""
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+
+  """
+  Reset user password. Confirm with a code (resetToken from forgotPassword)
+  """
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+
+  """Confirm an email users email address"""
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Option {
+  name: String!
+  items(filters: ItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ItemRelationResponseCollection
+  beverages(filters: BeverageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BeverageRelationResponseCollection
+  sides(filters: SideFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SideRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type OptionEntity {
+  id: ID
+  attributes: Option
+}
+
+type OptionEntityResponse {
+  data: OptionEntity
+}
+
+type OptionEntityResponseCollection {
+  data: [OptionEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OptionFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  items: ItemFiltersInput
+  beverages: BeverageFiltersInput
+  sides: SideFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [OptionFiltersInput]
+  or: [OptionFiltersInput]
+  not: OptionFiltersInput
+}
+
+input OptionInput {
+  name: String
+  items: [ID]
+  beverages: [ID]
+  sides: [ID]
+}
+
+type OptionRelationResponseCollection {
+  data: [OptionEntity!]!
+}
+
+type Pagination {
+  total: Int!
+  page: Int!
+  pageSize: Int!
+  pageCount: Int!
+}
+
+input PaginationArg {
+  page: Int
+  pageSize: Int
+  start: Int
+  limit: Int
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type Query {
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  beverage(id: ID): BeverageEntityResponse
+  beverages(filters: BeverageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BeverageEntityResponseCollection
+  burger(id: ID): BurgerEntityResponse
+  burgers(filters: BurgerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BurgerEntityResponseCollection
+  category(id: ID): CategoryEntityResponse
+  categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CategoryEntityResponseCollection
+  day(id: ID): DayEntityResponse
+  days(filters: DayFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DayEntityResponseCollection
+  dessert(id: ID): DessertEntityResponse
+  desserts(filters: DessertFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DessertEntityResponseCollection
+  ingredient(id: ID): IngredientEntityResponse
+  ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientEntityResponseCollection
+  item(id: ID): ItemEntityResponse
+  items(filters: ItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ItemEntityResponseCollection
+  option(id: ID): OptionEntityResponse
+  options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionEntityResponseCollection
+  restaurant(id: ID): RestaurantEntityResponse
+  restaurants(filters: RestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RestaurantEntityResponseCollection
+  salad(id: ID): SaladEntityResponse
+  salads(filters: SaladFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SaladEntityResponseCollection
+  sandwich(id: ID): SandwichEntityResponse
+  sandwiches(filters: SandwichFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): SandwichEntityResponseCollection
+  side(id: ID): SideEntityResponse
+  sides(filters: SideFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SideEntityResponseCollection
+  me: UsersPermissionsMe
+}
+
+type ResponseCollectionMeta {
+  pagination: Pagination!
+}
+
+type Restaurant {
+  name: String!
+  address: String!
+  phone: String!
+  moreOrders: Boolean!
+  isClose: Boolean!
+  schedule(filters: ComponentRestaurantScheduleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantSchedule]
+  postalCodes(filters: ComponentRestaurantPostalCodeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantPostalCode]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RestaurantEntity {
+  id: ID
+  attributes: Restaurant
+}
+
+type RestaurantEntityResponse {
+  data: RestaurantEntity
+}
+
+type RestaurantEntityResponseCollection {
+  data: [RestaurantEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input RestaurantFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  address: StringFilterInput
+  phone: StringFilterInput
+  moreOrders: BooleanFilterInput
+  isClose: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [RestaurantFiltersInput]
+  or: [RestaurantFiltersInput]
+  not: RestaurantFiltersInput
+}
+
+input RestaurantInput {
+  name: String
+  address: String
+  phone: String
+  moreOrders: Boolean
+  isClose: Boolean
+  schedule: [ComponentRestaurantScheduleInput]
+  postalCodes: [ComponentRestaurantPostalCodeInput]
+}
+
+type Salad {
+  name: String!
+  description: String
+  ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
+  position: Int!
+  category: CategoryEntityResponse
+  restaurant(filters: ComponentSaladRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSaladRestaurant]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SaladEntity {
+  id: ID
+  attributes: Salad
+}
+
+type SaladEntityResponse {
+  data: SaladEntity
+}
+
+type SaladEntityResponseCollection {
+  data: [SaladEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SaladFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  ingredients: IngredientFiltersInput
+  position: IntFilterInput
+  category: CategoryFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [SaladFiltersInput]
+  or: [SaladFiltersInput]
+  not: SaladFiltersInput
+}
+
+input SaladInput {
+  name: String
+  description: String
+  ingredients: [ID]
+  position: Int
+  category: ID
+  restaurant: [ComponentSaladRestaurantInput]
+}
+
+type SaladRelationResponseCollection {
+  data: [SaladEntity!]!
+}
+
+type Sandwich {
+  name: String
+  description: String
+  category: CategoryEntityResponse
+  ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
+  position: Int!
+  restaurants(filters: ComponentSandwichRestaurantsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSandwichRestaurants]
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type SandwichEntity {
+  id: ID
+  attributes: Sandwich
+}
+
+type SandwichEntityResponse {
+  data: SandwichEntity
+}
+
+type SandwichEntityResponseCollection {
+  data: [SandwichEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SandwichFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  category: CategoryFiltersInput
+  ingredients: IngredientFiltersInput
+  position: IntFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [SandwichFiltersInput]
+  or: [SandwichFiltersInput]
+  not: SandwichFiltersInput
+}
+
+input SandwichInput {
+  name: String
+  description: String
+  category: ID
+  ingredients: [ID]
+  position: Int
+  restaurants: [ComponentSandwichRestaurantsInput]
+  publishedAt: DateTime
+}
+
+type SandwichRelationResponseCollection {
+  data: [SandwichEntity!]!
+}
+
+type Side {
+  name: String!
+  position: Int
+  category: CategoryEntityResponse
+  isCustomizable: Boolean
+  sauces(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
+  ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
+  selectOneOption: Boolean
+  description: String
+  isSauce: Boolean
+  restaurant(filters: ComponentSideRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSideRestaurant]
+  options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SideEntity {
+  id: ID
+  attributes: Side
+}
+
+type SideEntityResponse {
+  data: SideEntity
+}
+
+type SideEntityResponseCollection {
+  data: [SideEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SideFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  position: IntFilterInput
+  category: CategoryFiltersInput
+  isCustomizable: BooleanFilterInput
+  sauces: IngredientFiltersInput
+  ingredients: IngredientFiltersInput
+  selectOneOption: BooleanFilterInput
+  description: StringFilterInput
+  isSauce: BooleanFilterInput
+  options: OptionFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [SideFiltersInput]
+  or: [SideFiltersInput]
+  not: SideFiltersInput
+}
+
+input SideInput {
+  name: String
+  position: Int
+  category: ID
+  isCustomizable: Boolean
+  sauces: [ID]
+  ingredients: [ID]
+  selectOneOption: Boolean
+  description: String
+  isSauce: Boolean
+  restaurant: [ComponentSideRestaurantInput]
+  options: [ID]
+}
+
+type SideRelationResponseCollection {
+  data: [SideEntity!]!
+}
+
+input StringFilterInput {
+  and: [String]
+  or: [String]
+  not: StringFilterInput
+  eq: String
+  ne: String
+  startsWith: String
+  endsWith: String
+  contains: String
+  notContains: String
+  containsi: String
+  notContainsi: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  null: Boolean
+  notNull: Boolean
+  in: [String]
+  notIn: [String]
+  between: [String]
+}
+
+"""A time string with format HH:mm:ss.SSS"""
+scalar Time
+
+input TimeFilterInput {
+  and: [Time]
+  or: [Time]
+  not: TimeFilterInput
+  eq: Time
+  ne: Time
+  startsWith: Time
+  endsWith: Time
+  contains: Time
+  notContains: Time
+  containsi: Time
+  notContainsi: Time
+  gt: Time
+  gte: Time
+  lt: Time
+  lte: Time
+  null: Boolean
+  notNull: Boolean
+  in: [Time]
+  notIn: [Time]
+  between: [Time]
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UploadFileEntity {
+  id: ID
+  attributes: UploadFile
+}
+
+type UploadFileEntityResponse {
+  data: UploadFileEntity
+}
+
+type UploadFileEntityResponseCollection {
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UploadFileFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  alternativeText: StringFilterInput
+  caption: StringFilterInput
+  width: IntFilterInput
+  height: IntFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  ext: StringFilterInput
+  mime: StringFilterInput
+  size: FloatFilterInput
+  url: StringFilterInput
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UploadFileFiltersInput]
+  or: [UploadFileFiltersInput]
+  not: UploadFileFiltersInput
+}
+
+input UploadFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+}
+
+type UsersPermissionsCreateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsDeleteRolePayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String! = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsPermission {
+  action: String!
+  role: UsersPermissionsRoleEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsPermissionEntity {
+  id: ID
+  attributes: UsersPermissionsPermission
+}
+
+input UsersPermissionsPermissionFiltersInput {
+  id: IDFilterInput
+  action: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  or: [UsersPermissionsPermissionFiltersInput]
+  not: UsersPermissionsPermissionFiltersInput
+}
+
+type UsersPermissionsPermissionRelationResponseCollection {
+  data: [UsersPermissionsPermissionEntity!]!
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsRoleEntity {
+  id: ID
+  attributes: UsersPermissionsRole
+}
+
+type UsersPermissionsRoleEntityResponse {
+  data: UsersPermissionsRoleEntity
+}
+
+type UsersPermissionsRoleEntityResponseCollection {
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsRoleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  type: StringFilterInput
+  permissions: UsersPermissionsPermissionFiltersInput
+  users: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsRoleFiltersInput]
+  or: [UsersPermissionsRoleFiltersInput]
+  not: UsersPermissionsRoleFiltersInput
+}
+
+input UsersPermissionsRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type UsersPermissionsUpdateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRoleEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsUserEntity {
+  id: ID
+  attributes: UsersPermissionsUser
+}
+
+type UsersPermissionsUserEntityResponse {
+  data: UsersPermissionsUserEntity
+}
+
+type UsersPermissionsUserEntityResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsUserFiltersInput {
+  id: IDFilterInput
+  username: StringFilterInput
+  email: StringFilterInput
+  provider: StringFilterInput
+  password: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  blocked: BooleanFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsUserFiltersInput]
+  or: [UsersPermissionsUserFiltersInput]
+  not: UsersPermissionsUserFiltersInput
+}
+
+input UsersPermissionsUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type UsersPermissionsUserRelationResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+}
+

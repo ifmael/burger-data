@@ -1,0 +1,328 @@
+query AppData {
+    beverages {
+        data {
+            id
+            attributes {
+                name
+                position
+                restaurant {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    burgers {
+        data {
+            id
+            attributes {
+                name
+                position
+                ingredients {
+                    data {
+                        id
+                        attributes {
+                            name
+                            inSalad
+                            inBurger
+                            inSandwich
+                        }
+                    }
+                }
+                position
+                isYourTaste
+                isChildrenMenu
+                description
+                restaurants {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                    meat {
+                        data {
+                            id
+                        }
+                    }
+                    meatPoint {
+                        data {
+                            id
+                        }
+                    }
+                    bread {
+                        data {
+                            id
+                        }
+                    }
+                    beverage {
+                        data {
+                            id
+                        }
+                    }
+                    sides {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    desserts {
+        data {
+            id
+            attributes {
+                name
+                position
+                restaurant {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    options {
+        data {
+            id
+            attributes {
+                name
+                items {
+                    data {
+                        id
+                    }
+                }
+                beverages {
+                    data {
+                        id
+                    }
+                }
+                sides {
+                    data {
+                        id
+                    }
+                }
+            }
+        }
+    }
+    salads {
+        data {
+            id
+            attributes {
+                name
+                position
+                description
+                ingredients {
+                    data {
+                        id
+                        attributes {
+                            name
+                            inBurger
+                            inSandwich
+                            inSalad
+                        }
+                    }
+                }
+                restaurant {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    sandwiches {
+        data {
+            id
+            attributes {
+                name
+                description
+                ingredients {
+                    data {
+                        id
+                        attributes {
+                            name
+                            inBurger
+                            inSandwich
+                            inSalad
+                        }
+                    }
+                }
+                position
+                restaurants {
+                    available
+                    price
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                    bread {
+                        data {
+                            id
+                        }
+                    }
+                    beverage {
+                        data {
+                            id
+                        }
+                    }
+                    side {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    sides {
+        data {
+            id
+            attributes {
+                name
+                description
+                position
+                isCustomizable
+                selectOneOption
+                isSauce
+                ingredients {
+                    data {
+                        id
+                    }
+                }
+                sauces {
+                    data {
+                        id
+                    }
+                }
+                restaurant {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ingredients {
+        data {
+            id
+            attributes {
+                name
+                inBurger
+                inSandwich
+                inSalad
+                restaurants {
+                    price
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    categories {
+        data {
+            id
+            attributes {
+                name
+                position
+                asset
+            }
+        }
+    }
+    restaurants {
+        data {
+            id
+            attributes {
+                name
+                address
+                phone
+                moreOrders
+                isClose
+                postalCodes {
+                    key
+                }
+                schedule {
+                    opening
+                    closing
+                    days {
+                        data {
+                            attributes {
+                                key
+                                day
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    items {
+        data {
+            id
+            attributes {
+                name
+                restaurant {
+                    price
+                    available
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+    categories {
+        data {
+            id
+            attributes {
+                name
+                position
+                asset
+            }
+        }
+    }
+    ingredients {
+        data {
+            id
+            attributes {
+                name
+                inSalad
+                inBurger
+                inSandwich
+                restaurants {
+                    price
+                    restaurant {
+                        data {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
