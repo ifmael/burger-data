@@ -20,7 +20,7 @@ import {
 // Types
 import { AppData } from "../types";
 
-const useAppData = () => {
+export const useAppData = () => {
   const { loading, error, data } = useAppDataQuery();
   const [appData, setAppData] = useState<AppData>();
 
@@ -47,5 +47,3 @@ const useAppData = () => {
 
   return { loading, error, appData };
 };
-
-export default useAppData;

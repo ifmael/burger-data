@@ -1,4 +1,4 @@
-export * from "./types";
+export { useAppData } from "./hooks/useAppData";
+export { useRestaurantData } from "./hooks/useRestaurantData";
 
-export * from "./hooks/useAppData";
-export * from "./hooks/useRestaurantData";
+export * from "./types";

@@ -11,7 +11,7 @@ import {
   convertBurgerPage,
 } from "./Restaurants.functions";
 
-const useRestaurantData = (appData: AppData) => {
+export const useRestaurantData = (appData: AppData) => {
   const [restaurantData, setRestaurantData] = useState<RestaurantData>();
 
   const filterProductForResturant = useCallback(
@@ -83,5 +83,3 @@ const useRestaurantData = (appData: AppData) => {
 
   return value;
 };
-
-export default useRestaurantData;
