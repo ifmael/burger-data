@@ -1,10 +1,13 @@
 {
   "name": "@ifmael/burger-data",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Data information",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
     "rollup": "rimraf ./dist && rollup -c",
     "download-schema": "get-graphql-schema  http://localhost:1337/graphql  > ./src/graphql/schema.graphql",
@@ -22,15 +25,16 @@
     "@graphql-codegen/typescript-graphql-files-modules": "^2.1.1",
     "@graphql-codegen/typescript-operations": "^2.2.2",
     "@graphql-codegen/typescript-react-apollo": "^3.2.3",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/react": "^17.0.38",
-    "esbuild": "^0.14.11",
     "get-graphql-schema": "^2.1.2",
     "graphql-codegen": "^0.4.0",
     "react": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.63.0",
+    "rollup": "^2.64.0",
     "rollup-plugin-dts": "^4.1.0",
-    "rollup-plugin-esbuild": "^4.8.2",
     "typescript": "^4.5.4"
   },
   "publishConfig": {

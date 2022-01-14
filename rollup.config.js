@@ -1,35 +1,34 @@
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
-import esbuild from "rollup-plugin-esbuild";
 
-const name = require("./package.json").main.replace(/\.js$/, "");
-
-const bundle = (config) => ({
-  ...config,
-  input: "src/index.ts",
-  external: (id) => !/^[./]/.test(id),
-});
+const packageJson = require("./package.json");
 
 export default [
-  bundle({
-    plugins: [esbuild()],
+  {
+    input: "src/index.ts",
     output: [
       {
-        file: `${name}.js`,
+        file: packageJson.main,
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: `${name}.mjs`,
-        format: "es",
+        file: packageJson.module,
+        format: "esm",
         sourcemap: true,
       },
     ],
-  }),
-  bundle({
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
+    ],
+  },
+  {
+    input: "dist/esm/types/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    output: {
-      file: `${name}.d.ts`,
-      format: "es",
-    },
-  }),
+  },
 ];
