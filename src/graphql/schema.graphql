@@ -977,7 +977,7 @@ type Restaurant {
   isClose: Boolean!
   schedule(filters: ComponentRestaurantScheduleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantSchedule]
   postalCodes(filters: ComponentRestaurantPostalCodeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantPostalCode]
-  slug: String
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
