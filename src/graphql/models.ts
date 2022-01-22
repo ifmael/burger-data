@@ -205,7 +205,7 @@ export type Category = {
   image?: Maybe<UploadFileEntityResponse>;
   name: Scalars['String'];
   position: Scalars['Int'];
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -2299,7 +2299,7 @@ export type BurgersPathsQuery = { __typename?: 'Query', burgers?: { __typename?:
 export type CategoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CategoryQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null | undefined, attributes?: { __typename?: 'Category', name: string, position: number, asset?: string | null | undefined, slug?: string | null | undefined } | null | undefined }> } | null | undefined };
+export type CategoryQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null | undefined, attributes?: { __typename?: 'Category', name: string, position: number, asset?: string | null | undefined, slug: string } | null | undefined }> } | null | undefined };
 
 export type AppDataQueryVariables = Exact<{ [key: string]: never; }>;
 

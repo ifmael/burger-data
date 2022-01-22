@@ -142,7 +142,7 @@ type Category {
   position: Int!
   image: UploadFileEntityResponse
   asset: String
-  slug: String
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
