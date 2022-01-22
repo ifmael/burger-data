@@ -10,4 +10,6 @@ export {
     CategoryQuery,
     BurgersBasicInfoDocument,
     BurgersBasicInfoQuery,
+    BurgersPathsDocument,
+    BurgersPathsQuery,
 } from "./graphql/models";
