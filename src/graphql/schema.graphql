@@ -85,6 +85,7 @@ type Burger {
   ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
   description: String
   restaurants(filters: ComponentBurguerRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBurguerRestaurant]
+  slug: String
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -112,6 +113,7 @@ input BurgerFiltersInput {
   isChildrenMenu: BooleanFilterInput
   ingredients: IngredientFiltersInput
   description: StringFilterInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [BurgerFiltersInput]
@@ -128,6 +130,7 @@ input BurgerInput {
   ingredients: [ID]
   description: String
   restaurants: [ComponentBurguerRestaurantInput]
+  slug: String
 }
 
 type BurgerRelationResponseCollection {
@@ -139,6 +142,7 @@ type Category {
   position: Int!
   image: UploadFileEntityResponse
   asset: String
+  slug: String
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -162,6 +166,7 @@ input CategoryFiltersInput {
   name: StringFilterInput
   position: IntFilterInput
   asset: StringFilterInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [CategoryFiltersInput]
@@ -174,6 +179,7 @@ input CategoryInput {
   position: Int
   image: ID
   asset: String
+  slug: String
 }
 
 type ComponentBeverageRestaurant {
@@ -971,6 +977,7 @@ type Restaurant {
   isClose: Boolean!
   schedule(filters: ComponentRestaurantScheduleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantSchedule]
   postalCodes(filters: ComponentRestaurantPostalCodeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantPostalCode]
+  slug: String
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -996,6 +1003,7 @@ input RestaurantFiltersInput {
   phone: StringFilterInput
   moreOrders: BooleanFilterInput
   isClose: BooleanFilterInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [RestaurantFiltersInput]
@@ -1011,6 +1019,7 @@ input RestaurantInput {
   isClose: Boolean
   schedule: [ComponentRestaurantScheduleInput]
   postalCodes: [ComponentRestaurantPostalCodeInput]
+  slug: String
 }
 
 type Salad {

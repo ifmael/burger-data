@@ -129,6 +129,7 @@ export type Burger = {
   name: Scalars['String'];
   position: Scalars['Int'];
   restaurants?: Maybe<Array<Maybe<ComponentBurguerRestaurant>>>;
+  slug?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -176,6 +177,7 @@ export type BurgerFiltersInput = {
   not?: InputMaybe<BurgerFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BurgerFiltersInput>>>;
   position?: InputMaybe<IntFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -188,6 +190,7 @@ export type BurgerInput = {
   name?: InputMaybe<Scalars['String']>;
   position?: InputMaybe<Scalars['Int']>;
   restaurants?: InputMaybe<Array<InputMaybe<ComponentBurguerRestaurantInput>>>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type BurgerRelationResponseCollection = {
@@ -202,6 +205,7 @@ export type Category = {
   image?: Maybe<UploadFileEntityResponse>;
   name: Scalars['String'];
   position: Scalars['Int'];
+  slug?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -231,6 +235,7 @@ export type CategoryFiltersInput = {
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   position?: InputMaybe<IntFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -239,6 +244,7 @@ export type CategoryInput = {
   image?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
   position?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentBeverageRestaurant = {
@@ -1636,6 +1642,7 @@ export type Restaurant = {
   phone: Scalars['String'];
   postalCodes?: Maybe<Array<Maybe<ComponentRestaurantPostalCode>>>;
   schedule?: Maybe<Array<Maybe<ComponentRestaurantSchedule>>>;
+  slug?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -1681,6 +1688,7 @@ export type RestaurantFiltersInput = {
   not?: InputMaybe<RestaurantFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<RestaurantFiltersInput>>>;
   phone?: InputMaybe<StringFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1692,6 +1700,7 @@ export type RestaurantInput = {
   phone?: InputMaybe<Scalars['String']>;
   postalCodes?: InputMaybe<Array<InputMaybe<ComponentRestaurantPostalCodeInput>>>;
   schedule?: InputMaybe<Array<InputMaybe<ComponentRestaurantScheduleInput>>>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type Salad = {
@@ -2277,12 +2286,176 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type BurgersBasicInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BurgersBasicInfoQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, description?: string | null | undefined, position: number, slug?: string | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+
+export type BurgersPathsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BurgersPathsQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', slug?: string | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+
+export type CategoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CategoryQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null | undefined, attributes?: { __typename?: 'Category', name: string, position: number, asset?: string | null | undefined, slug?: string | null | undefined } | null | undefined }> } | null | undefined };
+
 export type AppDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AppDataQuery = { __typename?: 'Query', beverages?: { __typename?: 'BeverageEntityResponseCollection', data: Array<{ __typename?: 'BeverageEntity', id?: string | null | undefined, attributes?: { __typename?: 'Beverage', name: string, position: number, restaurant?: Array<{ __typename?: 'ComponentBeverageRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, position: number, isYourTaste?: boolean | null | undefined, isChildrenMenu?: boolean | null | undefined, description?: string | null | undefined, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string, inSalad: boolean, inBurger: boolean, inSandwich: boolean } | null | undefined }> } | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined, meat?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, meatPoint?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, bread?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, beverage?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, sides?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, desserts?: { __typename?: 'DessertEntityResponseCollection', data: Array<{ __typename?: 'DessertEntity', id?: string | null | undefined, attributes?: { __typename?: 'Dessert', name: string, position: number, restaurant?: Array<{ __typename?: 'ComponentDessertRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, options?: { __typename?: 'OptionEntityResponseCollection', data: Array<{ __typename?: 'OptionEntity', id?: string | null | undefined, attributes?: { __typename?: 'Option', name: string, items?: { __typename?: 'ItemRelationResponseCollection', data: Array<{ __typename?: 'ItemEntity', id?: string | null | undefined }> } | null | undefined, beverages?: { __typename?: 'BeverageRelationResponseCollection', data: Array<{ __typename?: 'BeverageEntity', id?: string | null | undefined }> } | null | undefined, sides?: { __typename?: 'SideRelationResponseCollection', data: Array<{ __typename?: 'SideEntity', id?: string | null | undefined }> } | null | undefined } | null | undefined }> } | null | undefined, salads?: { __typename?: 'SaladEntityResponseCollection', data: Array<{ __typename?: 'SaladEntity', id?: string | null | undefined, attributes?: { __typename?: 'Salad', name: string, position: number, description?: string | null | undefined, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string, inBurger: boolean, inSandwich: boolean, inSalad: boolean } | null | undefined }> } | null | undefined, restaurant?: Array<{ __typename?: 'ComponentSaladRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, sandwiches?: { __typename?: 'SandwichEntityResponseCollection', data: Array<{ __typename?: 'SandwichEntity', id?: string | null | undefined, attributes?: { __typename?: 'Sandwich', name?: string | null | undefined, description?: string | null | undefined, position: number, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string, inBurger: boolean, inSandwich: boolean, inSalad: boolean } | null | undefined }> } | null | undefined, restaurants?: Array<{ __typename?: 'ComponentSandwichRestaurants', available: boolean, price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined, bread?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, beverage?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined, side?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, sides?: { __typename?: 'SideEntityResponseCollection', data: Array<{ __typename?: 'SideEntity', id?: string | null | undefined, attributes?: { __typename?: 'Side', name: string, description?: string | null | undefined, position?: number | null | undefined, isCustomizable?: boolean | null | undefined, selectOneOption?: boolean | null | undefined, isSauce?: boolean | null | undefined, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined }> } | null | undefined, sauces?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined }> } | null | undefined, restaurant?: Array<{ __typename?: 'ComponentSideRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, ingredients?: { __typename?: 'IngredientEntityResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string, inBurger: boolean, inSandwich: boolean, inSalad: boolean, restaurants?: Array<{ __typename?: 'ComponentIngredientRestaurant', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null | undefined, attributes?: { __typename?: 'Category', name: string, position: number, asset?: string | null | undefined } | null | undefined }> } | null | undefined, restaurants?: { __typename?: 'RestaurantEntityResponseCollection', data: Array<{ __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', name: string, address: string, phone: string, moreOrders: boolean, isClose: boolean, postalCodes?: Array<{ __typename?: 'ComponentRestaurantPostalCode', key: number } | null | undefined> | null | undefined, schedule?: Array<{ __typename?: 'ComponentRestaurantSchedule', opening: any, closing: any, days?: { __typename?: 'DayRelationResponseCollection', data: Array<{ __typename?: 'DayEntity', attributes?: { __typename?: 'Day', key: number, day: string } | null | undefined }> } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined, items?: { __typename?: 'ItemEntityResponseCollection', data: Array<{ __typename?: 'ItemEntity', id?: string | null | undefined, attributes?: { __typename?: 'Item', name: string, restaurant?: Array<{ __typename?: 'ComponentItemRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
 
+export type RestaurantQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type RestaurantQuery = { __typename?: 'Query', restaurants?: { __typename?: 'RestaurantEntityResponseCollection', data: Array<{ __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', name: string, slug?: string | null | undefined } | null | undefined }> } | null | undefined };
+
+
+export const BurgersBasicInfoDocument = gql`
+    query BurgersBasicInfo {
+  burgers {
+    data {
+      id
+      attributes {
+        name
+        description
+        position
+        slug
+        restaurants {
+          price
+          restaurant {
+            data {
+              id
+              attributes {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBurgersBasicInfoQuery__
+ *
+ * To run a query within a React component, call `useBurgersBasicInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBurgersBasicInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBurgersBasicInfoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useBurgersBasicInfoQuery(baseOptions?: Apollo.QueryHookOptions<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>(BurgersBasicInfoDocument, options);
+      }
+export function useBurgersBasicInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>(BurgersBasicInfoDocument, options);
+        }
+export type BurgersBasicInfoQueryHookResult = ReturnType<typeof useBurgersBasicInfoQuery>;
+export type BurgersBasicInfoLazyQueryHookResult = ReturnType<typeof useBurgersBasicInfoLazyQuery>;
+export type BurgersBasicInfoQueryResult = Apollo.QueryResult<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>;
+export const BurgersPathsDocument = gql`
+    query BurgersPaths {
+  burgers {
+    data {
+      id
+      attributes {
+        slug
+        restaurants {
+          restaurant {
+            data {
+              id
+              attributes {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBurgersPathsQuery__
+ *
+ * To run a query within a React component, call `useBurgersPathsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBurgersPathsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBurgersPathsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useBurgersPathsQuery(baseOptions?: Apollo.QueryHookOptions<BurgersPathsQuery, BurgersPathsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BurgersPathsQuery, BurgersPathsQueryVariables>(BurgersPathsDocument, options);
+      }
+export function useBurgersPathsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BurgersPathsQuery, BurgersPathsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BurgersPathsQuery, BurgersPathsQueryVariables>(BurgersPathsDocument, options);
+        }
+export type BurgersPathsQueryHookResult = ReturnType<typeof useBurgersPathsQuery>;
+export type BurgersPathsLazyQueryHookResult = ReturnType<typeof useBurgersPathsLazyQuery>;
+export type BurgersPathsQueryResult = Apollo.QueryResult<BurgersPathsQuery, BurgersPathsQueryVariables>;
+export const CategoryDocument = gql`
+    query Category {
+  categories {
+    data {
+      id
+      attributes {
+        name
+        position
+        asset
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCategoryQuery__
+ *
+ * To run a query within a React component, call `useCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoryQuery(baseOptions?: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(CategoryDocument, options);
+      }
+export function useCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoryQuery, CategoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CategoryQuery, CategoryQueryVariables>(CategoryDocument, options);
+        }
+export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>;
+export type CategoryLazyQueryHookResult = ReturnType<typeof useCategoryLazyQuery>;
+export type CategoryQueryResult = Apollo.QueryResult<CategoryQuery, CategoryQueryVariables>;
 export const AppDataDocument = gql`
     query AppData {
   beverages {
@@ -2640,3 +2813,43 @@ export function useAppDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ap
 export type AppDataQueryHookResult = ReturnType<typeof useAppDataQuery>;
 export type AppDataLazyQueryHookResult = ReturnType<typeof useAppDataLazyQuery>;
 export type AppDataQueryResult = Apollo.QueryResult<AppDataQuery, AppDataQueryVariables>;
+export const RestaurantDocument = gql`
+    query Restaurant {
+  restaurants {
+    data {
+      id
+      attributes {
+        name
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useRestaurantQuery__
+ *
+ * To run a query within a React component, call `useRestaurantQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRestaurantQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRestaurantQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRestaurantQuery(baseOptions?: Apollo.QueryHookOptions<RestaurantQuery, RestaurantQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RestaurantQuery, RestaurantQueryVariables>(RestaurantDocument, options);
+      }
+export function useRestaurantLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RestaurantQuery, RestaurantQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RestaurantQuery, RestaurantQueryVariables>(RestaurantDocument, options);
+        }
+export type RestaurantQueryHookResult = ReturnType<typeof useRestaurantQuery>;
+export type RestaurantLazyQueryHookResult = ReturnType<typeof useRestaurantLazyQuery>;
+export type RestaurantQueryResult = Apollo.QueryResult<RestaurantQuery, RestaurantQueryVariables>;

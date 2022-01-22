@@ -1,0 +1,20 @@
+query BurgersPaths {
+    burgers {
+        data {
+            id
+            attributes {
+                slug
+                restaurants {
+                    restaurant {
+                        data {
+                            id
+                            attributes {
+                                slug
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

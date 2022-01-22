@@ -1,0 +1,11 @@
+query Restaurant {
+    restaurants {
+        data {
+            id
+            attributes {
+                name
+                slug
+            }
+        }
+    }
+}
