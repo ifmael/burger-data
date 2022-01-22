@@ -3,4 +3,4 @@ export { useRestaurantData } from "./hooks/useRestaurantData";
 
 export * from "./types";
 
-export { RestaurantDocument, RestaurantQueryResult } from "./graphql/models";
+export { RestaurantDocument, RestaurantQuery, RestaurantQueryResult } from "./graphql/models";
