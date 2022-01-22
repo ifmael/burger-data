@@ -129,7 +129,7 @@ export type Burger = {
   name: Scalars['String'];
   position: Scalars['Int'];
   restaurants?: Maybe<Array<Maybe<ComponentBurguerRestaurant>>>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -2289,12 +2289,12 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type BurgersBasicInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BurgersBasicInfoQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, description?: string | null | undefined, position: number, slug?: string | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+export type BurgersBasicInfoQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, description?: string | null | undefined, position: number, slug: string, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
 
 export type BurgersPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BurgersPathsQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', slug?: string | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+export type BurgersPathsQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', slug: string, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
 
 export type CategoryQueryVariables = Exact<{ [key: string]: never; }>;
 

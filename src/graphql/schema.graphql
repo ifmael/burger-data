@@ -85,7 +85,7 @@ type Burger {
   ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
   description: String
   restaurants(filters: ComponentBurguerRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBurguerRestaurant]
-  slug: String
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
