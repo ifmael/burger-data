@@ -1784,6 +1784,7 @@ export type Sandwich = {
   position: Scalars['Int'];
   publishedAt?: Maybe<Scalars['DateTime']>;
   restaurants?: Maybe<Array<Maybe<ComponentSandwichRestaurants>>>;
+  slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -1830,6 +1831,7 @@ export type SandwichFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<SandwichFiltersInput>>>;
   position?: InputMaybe<IntFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1841,6 +1843,7 @@ export type SandwichInput = {
   position?: InputMaybe<Scalars['Int']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   restaurants?: InputMaybe<Array<InputMaybe<ComponentSandwichRestaurantsInput>>>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type SandwichRelationResponseCollection = {
@@ -2286,6 +2289,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type SandwichesBasicInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SandwichesBasicInfoQuery = { __typename?: 'Query', sandwiches?: { __typename?: 'SandwichEntityResponseCollection', data: Array<{ __typename?: 'SandwichEntity', id?: string | null | undefined, attributes?: { __typename?: 'Sandwich', name?: string | null | undefined, description?: string | null | undefined, position: number, slug: string, restaurants?: Array<{ __typename?: 'ComponentSandwichRestaurants', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+
 export type BurgersBasicInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2312,6 +2320,59 @@ export type RestaurantQueryVariables = Exact<{ [key: string]: never; }>;
 export type RestaurantQuery = { __typename?: 'Query', restaurants?: { __typename?: 'RestaurantEntityResponseCollection', data: Array<{ __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', name: string, slug: string } | null | undefined }> } | null | undefined };
 
 
+export const SandwichesBasicInfoDocument = gql`
+    query SandwichesBasicInfo {
+  sandwiches {
+    data {
+      id
+      attributes {
+        name
+        description
+        position
+        slug
+        restaurants {
+          price
+          restaurant {
+            data {
+              id
+              attributes {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useSandwichesBasicInfoQuery__
+ *
+ * To run a query within a React component, call `useSandwichesBasicInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSandwichesBasicInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSandwichesBasicInfoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSandwichesBasicInfoQuery(baseOptions?: Apollo.QueryHookOptions<SandwichesBasicInfoQuery, SandwichesBasicInfoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SandwichesBasicInfoQuery, SandwichesBasicInfoQueryVariables>(SandwichesBasicInfoDocument, options);
+      }
+export function useSandwichesBasicInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SandwichesBasicInfoQuery, SandwichesBasicInfoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SandwichesBasicInfoQuery, SandwichesBasicInfoQueryVariables>(SandwichesBasicInfoDocument, options);
+        }
+export type SandwichesBasicInfoQueryHookResult = ReturnType<typeof useSandwichesBasicInfoQuery>;
+export type SandwichesBasicInfoLazyQueryHookResult = ReturnType<typeof useSandwichesBasicInfoLazyQuery>;
+export type SandwichesBasicInfoQueryResult = Apollo.QueryResult<SandwichesBasicInfoQuery, SandwichesBasicInfoQueryVariables>;
 export const BurgersBasicInfoDocument = gql`
     query BurgersBasicInfo {
   burgers {

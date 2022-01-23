@@ -1081,6 +1081,7 @@ type Sandwich {
   ingredients(filters: IngredientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): IngredientRelationResponseCollection
   position: Int!
   restaurants(filters: ComponentSandwichRestaurantsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSandwichRestaurants]
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
   publishedAt: DateTime
@@ -1107,6 +1108,7 @@ input SandwichFiltersInput {
   category: CategoryFiltersInput
   ingredients: IngredientFiltersInput
   position: IntFilterInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   publishedAt: DateTimeFilterInput
@@ -1122,6 +1124,7 @@ input SandwichInput {
   ingredients: [ID]
   position: Int
   restaurants: [ComponentSandwichRestaurantsInput]
+  slug: String
   publishedAt: DateTime
 }
 
