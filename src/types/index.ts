@@ -97,13 +97,13 @@ export type SideApp = Omit<SideAPI, "restaurant" | "ingredients" | "sauces"> & {
     sauces: string[];
 };
 
-export type SandwichApp = Omit<SandwichAPI, "restaurant" | "ingredients"> & {
+export type SandwichApp = Omit<SandwichAPI, "restaurant" | "ingredients" | "slug"> & {
     id: string;
     ingredients: string[];
     restaurant: (SideConfiguration & PriceRestaurant)[];
 };
 
-export type BurgerApp = Omit<BurgerAPI, "restaurants" | "ingredients"> & {
+export type BurgerApp = Omit<BurgerAPI, "restaurants" | "ingredients" | "slug"> & {
     id: string;
     ingredients: string[];
     restaurants: (BurgerConfiguration & PriceRestaurant)[];
