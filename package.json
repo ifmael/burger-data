@@ -1,6 +1,6 @@
 {
     "name": "@ifmael/burger-data",
-    "version": "0.3.14",
+    "version": "0.3.15",
     "description": "Data information",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
