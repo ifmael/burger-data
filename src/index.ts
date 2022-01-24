@@ -14,4 +14,7 @@ export {
     BurgersPathsQuery,
     SandwichesBasicInfoDocument,
     SandwichesBasicInfoQuery,
+    BurgerPageQuery,
+    BurgerPageDocument,
+    BurgerPageQueryVariables,
 } from "./graphql/models";

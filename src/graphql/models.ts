@@ -2299,6 +2299,13 @@ export type BurgersBasicInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type BurgersBasicInfoQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, description?: string | null | undefined, position: number, slug: string, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined, attributes?: { __typename?: 'Restaurant', slug: string } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
 
+export type BurgerPageQueryVariables = Exact<{
+  filters?: InputMaybe<BurgerFiltersInput>;
+}>;
+
+
+export type BurgerPageQuery = { __typename?: 'Query', burgers?: { __typename?: 'BurgerEntityResponseCollection', data: Array<{ __typename?: 'BurgerEntity', id?: string | null | undefined, attributes?: { __typename?: 'Burger', name: string, position: number, isYourTaste?: boolean | null | undefined, isChildrenMenu?: boolean | null | undefined, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string } | null | undefined }> } | null | undefined, restaurants?: Array<{ __typename?: 'ComponentBurguerRestaurant', price: number, available: boolean, meat?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', attributes?: { __typename?: 'Option', items?: { __typename?: 'ItemRelationResponseCollection', data: Array<{ __typename?: 'ItemEntity', id?: string | null | undefined, attributes?: { __typename?: 'Item', name: string, restaurant?: Array<{ __typename?: 'ComponentItemRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined } | null | undefined } | null | undefined } | null | undefined, meatPoint?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', attributes?: { __typename?: 'Option', items?: { __typename?: 'ItemRelationResponseCollection', data: Array<{ __typename?: 'ItemEntity', id?: string | null | undefined, attributes?: { __typename?: 'Item', name: string, restaurant?: Array<{ __typename?: 'ComponentItemRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined } | null | undefined } | null | undefined } | null | undefined, bread?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', attributes?: { __typename?: 'Option', items?: { __typename?: 'ItemRelationResponseCollection', data: Array<{ __typename?: 'ItemEntity', id?: string | null | undefined, attributes?: { __typename?: 'Item', name: string } | null | undefined }> } | null | undefined } | null | undefined } | null | undefined } | null | undefined, beverage?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', attributes?: { __typename?: 'Option', beverages?: { __typename?: 'BeverageRelationResponseCollection', data: Array<{ __typename?: 'BeverageEntity', id?: string | null | undefined, attributes?: { __typename?: 'Beverage', name: string, position: number, restaurant?: Array<{ __typename?: 'ComponentBeverageRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined } | null | undefined } | null | undefined } | null | undefined, sides?: { __typename?: 'OptionEntityResponse', data?: { __typename?: 'OptionEntity', attributes?: { __typename?: 'Option', sides?: { __typename?: 'SideRelationResponseCollection', data: Array<{ __typename?: 'SideEntity', id?: string | null | undefined, attributes?: { __typename?: 'Side', name: string, position?: number | null | undefined, isCustomizable?: boolean | null | undefined, isSauce?: boolean | null | undefined, selectOneOption?: boolean | null | undefined, ingredients?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string } | null | undefined }> } | null | undefined, sauces?: { __typename?: 'IngredientRelationResponseCollection', data: Array<{ __typename?: 'IngredientEntity', id?: string | null | undefined, attributes?: { __typename?: 'Ingredient', name: string } | null | undefined }> } | null | undefined, restaurant?: Array<{ __typename?: 'ComponentSideRestaurant', price: number, available: boolean, restaurant?: { __typename?: 'RestaurantEntityResponse', data?: { __typename?: 'RestaurantEntity', id?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined }> } | null | undefined };
+
 export type BurgersPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2426,6 +2433,188 @@ export function useBurgersBasicInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type BurgersBasicInfoQueryHookResult = ReturnType<typeof useBurgersBasicInfoQuery>;
 export type BurgersBasicInfoLazyQueryHookResult = ReturnType<typeof useBurgersBasicInfoLazyQuery>;
 export type BurgersBasicInfoQueryResult = Apollo.QueryResult<BurgersBasicInfoQuery, BurgersBasicInfoQueryVariables>;
+export const BurgerPageDocument = gql`
+    query BurgerPage($filters: BurgerFiltersInput) {
+  burgers(filters: $filters) {
+    data {
+      id
+      attributes {
+        name
+        position
+        isYourTaste
+        isChildrenMenu
+        ingredients {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        restaurants {
+          price
+          available
+          meat {
+            data {
+              attributes {
+                items {
+                  data {
+                    id
+                    attributes {
+                      name
+                      restaurant {
+                        price
+                        available
+                        restaurant {
+                          data {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          meatPoint {
+            data {
+              attributes {
+                items {
+                  data {
+                    id
+                    attributes {
+                      name
+                      restaurant {
+                        price
+                        available
+                        restaurant {
+                          data {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          bread {
+            data {
+              attributes {
+                items {
+                  data {
+                    id
+                    attributes {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+          beverage {
+            data {
+              attributes {
+                beverages {
+                  data {
+                    id
+                    attributes {
+                      name
+                      position
+                      restaurant {
+                        price
+                        available
+                        restaurant {
+                          data {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          sides {
+            data {
+              attributes {
+                sides {
+                  data {
+                    id
+                    attributes {
+                      name
+                      position
+                      isCustomizable
+                      isSauce
+                      selectOneOption
+                      ingredients {
+                        data {
+                          id
+                          attributes {
+                            name
+                          }
+                        }
+                      }
+                      sauces {
+                        data {
+                          id
+                          attributes {
+                            name
+                          }
+                        }
+                      }
+                      restaurant {
+                        price
+                        available
+                        restaurant {
+                          data {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBurgerPageQuery__
+ *
+ * To run a query within a React component, call `useBurgerPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBurgerPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBurgerPageQuery({
+ *   variables: {
+ *      filters: // value for 'filters'
+ *   },
+ * });
+ */
+export function useBurgerPageQuery(baseOptions?: Apollo.QueryHookOptions<BurgerPageQuery, BurgerPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BurgerPageQuery, BurgerPageQueryVariables>(BurgerPageDocument, options);
+      }
+export function useBurgerPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BurgerPageQuery, BurgerPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BurgerPageQuery, BurgerPageQueryVariables>(BurgerPageDocument, options);
+        }
+export type BurgerPageQueryHookResult = ReturnType<typeof useBurgerPageQuery>;
+export type BurgerPageLazyQueryHookResult = ReturnType<typeof useBurgerPageLazyQuery>;
+export type BurgerPageQueryResult = Apollo.QueryResult<BurgerPageQuery, BurgerPageQueryVariables>;
 export const BurgersPathsDocument = gql`
     query BurgersPaths {
   burgers {

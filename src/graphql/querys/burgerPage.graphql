@@ -1,0 +1,152 @@
+query BurgerPage($filters: BurgerFiltersInput) {
+    burgers(filters: $filters) {
+        data {
+            id
+            attributes {
+                name
+                position
+                isYourTaste
+                isChildrenMenu
+                ingredients {
+                    data {
+                        id
+                        attributes {
+                            name
+                        }
+                    }
+                }
+                restaurants {
+                    price
+                    available
+                    meat {
+                        data {
+                            attributes {
+                                items {
+                                    data {
+                                        id
+                                        attributes {
+                                            name
+                                            restaurant {
+                                                price
+                                                available
+                                                restaurant {
+                                                    data {
+                                                        id
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    meatPoint {
+                        data {
+                            attributes {
+                                items {
+                                    data {
+                                        id
+                                        attributes {
+                                            name
+                                            restaurant {
+                                                price
+                                                available
+                                                restaurant {
+                                                    data {
+                                                        id
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    bread {
+                        data {
+                            attributes {
+                                items {
+                                    data {
+                                        id
+                                        attributes {
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    beverage {
+                        data {
+                            attributes {
+                                beverages {
+                                    data {
+                                        id
+                                        attributes {
+                                            name
+                                            position
+                                            restaurant {
+                                                price
+                                                available
+                                                restaurant {
+                                                    data {
+                                                        id
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    sides {
+                        data {
+                            attributes {
+                                sides {
+                                    data {
+                                        id
+                                        attributes {
+                                            name
+                                            position
+                                            isCustomizable
+                                            isSauce
+                                            selectOneOption
+                                            ingredients {
+                                                data {
+                                                    id
+                                                    attributes {
+                                                        name
+                                                    }
+                                                }
+                                            }
+                                            sauces {
+                                                data {
+                                                    id
+                                                    attributes {
+                                                        name
+                                                    }
+                                                }
+                                            }
+                                            restaurant {
+                                                price
+                                                available
+                                                restaurant {
+                                                    data {
+                                                        id
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
