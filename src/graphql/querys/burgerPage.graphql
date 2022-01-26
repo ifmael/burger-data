@@ -39,7 +39,9 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                 available
                                                 restaurant {
                                                     data {
-                                                        id
+                                                        attributes {
+                                                            slug
+                                                        }
                                                     }
                                                 }
                                             }
@@ -62,7 +64,9 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                 available
                                                 restaurant {
                                                     data {
-                                                        id
+                                                        attributes {
+                                                            slug
+                                                        }
                                                     }
                                                 }
                                             }
@@ -85,7 +89,9 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                 available
                                                 restaurant {
                                                     data {
-                                                        id
+                                                        attributes {
+                                                            slug
+                                                        }
                                                     }
                                                 }
                                             }
@@ -109,7 +115,9 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                 available
                                                 restaurant {
                                                     data {
-                                                        id
+                                                        attributes {
+                                                            slug
+                                                        }
                                                     }
                                                 }
                                             }
@@ -152,7 +160,9 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                 available
                                                 restaurant {
                                                     data {
-                                                        id
+                                                        attributes {
+                                                            slug
+                                                        }
                                                     }
                                                 }
                                             }
