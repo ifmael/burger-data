@@ -80,6 +80,15 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                         id
                                         attributes {
                                             name
+                                            restaurant {
+                                                price
+                                                available
+                                                restaurant {
+                                                    data {
+                                                        id
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
