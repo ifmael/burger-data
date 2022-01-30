@@ -148,6 +148,16 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                         inSalad
                                                         inBurger
                                                         inSandwich
+                                                        restaurants {
+                                                            price
+                                                            restaurant {
+                                                                data {
+                                                                    attributes {
+                                                                        slug
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -159,6 +169,16 @@ query BurgerPage($filters: BurgerFiltersInput) {
                                                         inSalad
                                                         inBurger
                                                         inSandwich
+                                                        restaurants {
+                                                            price
+                                                            restaurant {
+                                                                data {
+                                                                    attributes {
+                                                                        slug
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }

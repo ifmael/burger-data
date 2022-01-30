@@ -296,33 +296,4 @@ query AppData {
             }
         }
     }
-    categories {
-        data {
-            id
-            attributes {
-                name
-                position
-                asset
-            }
-        }
-    }
-    ingredients {
-        data {
-            id
-            attributes {
-                name
-                inSalad
-                inBurger
-                inSandwich
-                restaurants {
-                    price
-                    restaurant {
-                        data {
-                            id
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
