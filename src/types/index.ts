@@ -121,7 +121,7 @@ export type OptionApp = Omit<OptionAPI, "items" | "beverages" | "sides"> & {
     sides: string[];
 };
 
-export type CategoryApp = Omit<CategoryAPI, "slug"> & {
+export type CategoryApp = CategoryAPI & {
     id: string;
 };
 

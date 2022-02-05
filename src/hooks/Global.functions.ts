@@ -353,6 +353,7 @@ export const convertCategoryApp = (collectionCategory: CategoryQuery): CategoryA
             name: attributes?.name ?? "",
             position: attributes?.position ?? 0,
             asset: attributes?.asset ?? "",
+            slug: attributes?.slug ?? "",
         }));
     }
 

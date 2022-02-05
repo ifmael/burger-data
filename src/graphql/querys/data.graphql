@@ -249,6 +249,7 @@ query AppData {
                 name
                 position
                 asset
+                slug
             }
         }
     }
