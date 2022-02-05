@@ -96,6 +96,7 @@ export const convertRestaurantApp = (restaurantCollection: RestaurantsQuery): Re
                 name: attributes?.name ?? "",
                 address: attributes?.address ?? "",
                 phone: attributes?.phone ?? "",
+                slug: attributes?.slug ?? "",
                 moreOrders: !!attributes?.moreOrders,
                 isClose: !!attributes?.isClose,
                 postalCodes,

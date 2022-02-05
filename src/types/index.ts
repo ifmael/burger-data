@@ -64,7 +64,7 @@ export type ComponentCommonRestaurant =
 
 // ###############  Models APP ###############
 
-export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes" | "slug"> & {
+export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes"> & {
     id: string;
     schedule: {
         closing: string;

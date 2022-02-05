@@ -264,6 +264,7 @@ query AppData {
                 postalCodes {
                     key
                 }
+                slug
                 schedule {
                     opening
                     closing

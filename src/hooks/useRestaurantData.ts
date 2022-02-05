@@ -15,20 +15,23 @@ export const useRestaurantData = (appData: AppData) => {
     const [restaurantData, setRestaurantData] = useState<RestaurantData>();
 
     const filterProductForResturant = useCallback(
-        (idRestaurant: string) => {
+        (filter: string, findBySlug: boolean = false) => {
             try {
                 const { restaurants } = appData;
-                const restaurant = restaurants.find(({ id }) => id === idRestaurant);
+                const restaurant = findBySlug
+                    ? restaurants.find(({ slug }) => slug === slug)
+                    : restaurants.find(({ id }) => id === filter);
+
                 if (restaurant) {
-                    const items = convertItem(appData.items, idRestaurant);
-                    const beverages = convertSimpleModel(appData.beverages, idRestaurant);
-                    const desserts = convertSimpleModel(appData.desserts, idRestaurant);
-                    const ingredients = convertIngredient(appData.ingredients, idRestaurant);
-                    const sidesPages = convertSidePage(appData.sides, idRestaurant, ingredients);
-                    const saladsPages = convertSaladPage(appData.salads, idRestaurant, ingredients);
+                    const items = convertItem(appData.items, restaurant.id);
+                    const beverages = convertSimpleModel(appData.beverages, restaurant.id);
+                    const desserts = convertSimpleModel(appData.desserts, restaurant.id);
+                    const ingredients = convertIngredient(appData.ingredients, restaurant.id);
+                    const sidesPages = convertSidePage(appData.sides, restaurant.id, ingredients);
+                    const saladsPages = convertSaladPage(appData.salads, restaurant.id, ingredients);
                     const sandwichesPages = convertSandwichPage(
                         appData.sandwiches,
-                        idRestaurant,
+                        restaurant.id,
                         ingredients,
                         appData.options,
                         items,
@@ -38,7 +41,7 @@ export const useRestaurantData = (appData: AppData) => {
 
                     const burgersPages = convertBurgerPage(
                         appData.burgers,
-                        idRestaurant,
+                        restaurant.id,
                         ingredients,
                         appData.options,
                         items,
@@ -56,7 +59,7 @@ export const useRestaurantData = (appData: AppData) => {
                         burgersPages,
                     });
                 } else {
-                    console.warn(`There is not restaurant with the id: ${idRestaurant}`);
+                    console.warn(`There is not restaurant with the filter: ${filter}`);
                 }
             } catch (error) {
                 console.warn(error);
