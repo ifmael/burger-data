@@ -262,6 +262,7 @@ export const convertBurgerApp = (burgerCollection: BurgerQuery): BurgerApp[] => 
                 position: attributes?.position ?? 0,
                 ingredients,
                 restaurants,
+                slug: attributes?.slug ?? "",
             };
             return burger;
         });

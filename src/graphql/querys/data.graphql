@@ -38,6 +38,7 @@ query AppData {
                 isYourTaste
                 isChildrenMenu
                 description
+                slug
                 restaurants {
                     price
                     available

@@ -103,7 +103,7 @@ export type SandwichApp = Omit<SandwichAPI, "restaurant" | "ingredients" | "slug
     restaurant: (SideConfiguration & PriceRestaurant)[];
 };
 
-export type BurgerApp = Omit<BurgerAPI, "restaurants" | "ingredients" | "slug"> & {
+export type BurgerApp = Omit<BurgerAPI, "restaurants" | "ingredients"> & {
     id: string;
     ingredients: string[];
     restaurants: (BurgerConfiguration & PriceRestaurant)[];
@@ -259,6 +259,7 @@ export type BurgerPage = {
     meatPoint: Item[];
     sides: SidePage[];
     beverages: Beverage[];
+    slug: string;
 };
 
 export type Burger = {
