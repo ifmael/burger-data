@@ -69,7 +69,11 @@ export const useRestaurantData = (appData: AppData) => {
     );
 
     const value = useMemo(
-        () => [restaurantData, filterProductForResturant] as RestaurantCtx,
+        () =>
+            [restaurantData, filterProductForResturant] as [
+                RestaurantData | undefined,
+                (filter: string, findBySlug: boolean) => void
+            ],
         [filterProductForResturant, restaurantData]
     );
 

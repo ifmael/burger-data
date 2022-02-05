@@ -13,6 +13,7 @@ import {
     AppDataQuery,
 } from "../graphql/models";
 
+import { useRestaurantData } from "../hooks/useRestaurantData";
 export type UndefinedNull = undefined | null;
 
 export interface Config {
@@ -306,4 +307,4 @@ export type AppData = {
     ingredients: IngredientApp[];
 };
 
-export type RestaurantCtx = [RestaurantData | undefined, (idRestaurant: string) => void];
+export type RestaurantCtx = ReturnType<typeof useRestaurantData>;
