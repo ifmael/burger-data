@@ -222,6 +222,7 @@ export const convertSandwichPage = (
                 id: currentSandwich.id,
                 name: currentSandwich.name ?? "",
                 description: currentSandwich.description ?? "",
+                slug: currentSandwich.slug,
                 price: resturantItem.price,
                 position: currentSandwich.position,
                 ingredients: ingredientsProduct,

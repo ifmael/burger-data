@@ -207,6 +207,7 @@ export const convertSandwichApp = (sandwichCollection: SandwichQuery): SandwichA
                 name: attributes?.name ?? "",
                 description: attributes?.description ?? "",
                 position: attributes?.position ?? 0,
+                slug: attributes?.slug ?? "",
                 ingredients,
                 restaurant,
             };

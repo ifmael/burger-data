@@ -165,6 +165,7 @@ query AppData {
                     }
                 }
                 position
+                slug
                 restaurants {
                     available
                     price

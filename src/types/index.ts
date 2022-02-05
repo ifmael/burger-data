@@ -97,7 +97,7 @@ export type SideApp = Omit<SideAPI, "restaurant" | "ingredients" | "sauces"> & {
     sauces: string[];
 };
 
-export type SandwichApp = Omit<SandwichAPI, "restaurant" | "ingredients" | "slug"> & {
+export type SandwichApp = Omit<SandwichAPI, "restaurant" | "ingredients"> & {
     id: string;
     ingredients: string[];
     restaurant: (SideConfiguration & PriceRestaurant)[];
@@ -230,6 +230,7 @@ export type SandwichPage = {
     bread: Item[];
     sides: SidePage[];
     beverages: Beverage[];
+    slug: string;
 };
 
 export type Sandwich = {
