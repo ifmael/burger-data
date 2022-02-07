@@ -155,6 +155,7 @@ export const convertSideApp = (sideCollection: SidesQuery): SideApp[] => {
                 id: id ?? "",
                 name: attributes?.name ?? "",
                 description: attributes?.description ?? "",
+                slug: attributes?.slug ?? "",
                 position: attributes?.position ?? 0,
                 selectOneOption: !!attributes?.selectOneOption,
                 isCustomizable: !!attributes?.isCustomizable,

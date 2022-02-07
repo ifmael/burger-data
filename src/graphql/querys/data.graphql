@@ -201,6 +201,7 @@ query AppData {
                 name
                 description
                 position
+                slug
                 isCustomizable
                 selectOneOption
                 isSauce

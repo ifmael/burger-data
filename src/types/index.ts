@@ -210,6 +210,7 @@ export type SidePage = {
     selectOneOption: boolean;
     ingredients: Ingredient[];
     sauces: Ingredient[];
+    slug: string;
 };
 
 export type Side = {

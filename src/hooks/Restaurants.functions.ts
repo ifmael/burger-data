@@ -105,6 +105,7 @@ export const convertSidePage = (sides: SideApp[], idRestaurant: string, ingredie
             isCustomizable,
             isSauce,
             selectOneOption,
+            slug,
         } = side;
         const ingredientsSide = getElements(ingredientsIDs, ingredients);
         const saucesSide = getElements(saucesIDs, ingredients);
@@ -113,6 +114,7 @@ export const convertSidePage = (sides: SideApp[], idRestaurant: string, ingredie
             id,
             name,
             description: description ?? "",
+            slug,
             position: position ?? 0,
             isCustomizable: !!isCustomizable,
             isSauce: !!isSauce,

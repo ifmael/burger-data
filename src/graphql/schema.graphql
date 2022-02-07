@@ -1147,6 +1147,7 @@ type Side {
   isSauce: Boolean
   restaurant(filters: ComponentSideRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSideRestaurant]
   options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionRelationResponseCollection
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -1177,6 +1178,7 @@ input SideFiltersInput {
   description: StringFilterInput
   isSauce: BooleanFilterInput
   options: OptionFiltersInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [SideFiltersInput]
@@ -1196,6 +1198,7 @@ input SideInput {
   isSauce: Boolean
   restaurant: [ComponentSideRestaurantInput]
   options: [ID]
+  slug: String
 }
 
 type SideRelationResponseCollection {
