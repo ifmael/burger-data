@@ -338,6 +338,7 @@ export function convertSimpleModel(collection: BeveragesQuery | DessertsQuery): 
                     id: id ?? "",
                     name: attributes?.name ?? "",
                     position: attributes?.position ?? 0,
+                    slug: attributes?.slug ?? "",
                     restaurant,
                 };
 

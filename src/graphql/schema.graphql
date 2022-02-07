@@ -10,6 +10,7 @@ type Beverage {
   position: Int!
   restaurant(filters: ComponentBeverageRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBeverageRestaurant]
   options(filters: OptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OptionRelationResponseCollection
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -34,6 +35,7 @@ input BeverageFiltersInput {
   category: CategoryFiltersInput
   position: IntFilterInput
   options: OptionFiltersInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [BeverageFiltersInput]
@@ -47,6 +49,7 @@ input BeverageInput {
   position: Int
   restaurant: [ComponentBeverageRestaurantInput]
   options: [ID]
+  slug: String
 }
 
 type BeverageRelationResponseCollection {
@@ -503,6 +506,7 @@ type Dessert {
   position: Int!
   category: CategoryEntityResponse
   restaurant(filters: ComponentDessertRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDessertRestaurant]
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -526,6 +530,7 @@ input DessertFiltersInput {
   name: StringFilterInput
   position: IntFilterInput
   category: CategoryFiltersInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [DessertFiltersInput]
@@ -538,6 +543,7 @@ input DessertInput {
   position: Int
   category: ID
   restaurant: [ComponentDessertRestaurantInput]
+  slug: String
 }
 
 input FileInfoInput {

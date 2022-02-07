@@ -172,6 +172,7 @@ export type Beverage = {
     name: string;
     price: number;
     position: number;
+    slug: string;
 };
 
 export type Dessert = {
@@ -179,6 +180,7 @@ export type Dessert = {
     name: string;
     price: number;
     position: number;
+    slug: string;
 };
 
 export type SaladPage = {
