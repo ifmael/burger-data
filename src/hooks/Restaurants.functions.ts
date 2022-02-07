@@ -250,7 +250,7 @@ export function convertSimpleModel(
         .map((el) => {
             const resturantItem = getPriceRestaurant(el.restaurant, idRestaurant);
 
-            return resturantItem ? { id: el.id, name: el.name, price: resturantItem.price } : null;
+            return resturantItem ? { id: el.id, name: el.name, slug: el.slug, price: resturantItem.price } : null;
         })
         .filter((el) => !!el) as Beverage[] | Dessert[];
 }
