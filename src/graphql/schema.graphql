@@ -1029,6 +1029,7 @@ type Salad {
   position: Int!
   category: CategoryEntityResponse
   restaurant(filters: ComponentSaladRestaurantFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSaladRestaurant]
+  slug: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -1054,6 +1055,7 @@ input SaladFiltersInput {
   ingredients: IngredientFiltersInput
   position: IntFilterInput
   category: CategoryFiltersInput
+  slug: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [SaladFiltersInput]
@@ -1068,6 +1070,7 @@ input SaladInput {
   position: Int
   category: ID
   restaurant: [ComponentSaladRestaurantInput]
+  slug: String
 }
 
 type SaladRelationResponseCollection {

@@ -189,6 +189,7 @@ export type SaladPage = {
     position: number;
     ingredients: Ingredient[];
     ingredientsExtra: Ingredient[];
+    slug: string;
 };
 export type Salad = {
     id: string;

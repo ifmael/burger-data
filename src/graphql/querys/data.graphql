@@ -124,6 +124,7 @@ query AppData {
                 name
                 position
                 description
+                slug
                 ingredients {
                     data {
                         id

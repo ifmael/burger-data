@@ -125,6 +125,7 @@ export const convertSaladApp = (saladCollection: SaladsQuery): SaladApp[] => {
                 id: id ?? "",
                 name: attributes?.name ?? "",
                 description: attributes?.description ?? "",
+                slug: attributes?.slug ?? "",
                 position: attributes?.position ?? 0,
                 ingredients,
                 restaurant,

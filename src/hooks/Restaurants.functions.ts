@@ -135,6 +135,7 @@ export const convertSaladPage = (salads: SaladApp[], idRestaurant: string, ingre
             name: saladInner.name,
             description: saladInner.description ?? "",
             position: saladInner.position,
+            slug: saladInner.slug,
             ingredients: ingredientsProduct,
             ingredientsExtra: [],
         };
