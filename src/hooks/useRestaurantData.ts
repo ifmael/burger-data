@@ -58,7 +58,7 @@ export const useRestaurantData = (appData: AppData) => {
                         saladsPages,
                         sandwichesPages,
                         burgersPages,
-                        restaurant,
+                        info: restaurant,
                     });
                 } else {
                     console.warn(`There is not restaurant with the filter: ${filter}`);

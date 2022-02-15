@@ -293,7 +293,7 @@ export type RestaurantData = {
     saladsPages: SaladPage[];
     sandwichesPages: SandwichPage[];
     burgersPages: BurgerPage[];
-    restaurant: RestaurantApp;
+    info: RestaurantApp;
 };
 
 // Context
