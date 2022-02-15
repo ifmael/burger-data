@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import { AppData, RestaurantData, RestaurantCtx } from "../types";
+import { AppData, RestaurantData } from "../types";
 
 import {
     convertSimpleModel,
@@ -48,6 +48,7 @@ export const useRestaurantData = (appData: AppData) => {
                         sidesPages,
                         beverages
                     );
+
                     setRestaurantData({
                         items,
                         beverages,
@@ -57,6 +58,7 @@ export const useRestaurantData = (appData: AppData) => {
                         saladsPages,
                         sandwichesPages,
                         burgersPages,
+                        restaurant,
                     });
                 } else {
                     console.warn(`There is not restaurant with the filter: ${filter}`);
