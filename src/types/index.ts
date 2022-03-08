@@ -173,6 +173,7 @@ export type Beverage = {
     price: number;
     position: number;
     slug: string;
+    type: "beverage";
 };
 
 export type Dessert = {
@@ -181,6 +182,7 @@ export type Dessert = {
     price: number;
     position: number;
     slug: string;
+    type: "dessert";
 };
 
 export type SaladPage = {
@@ -199,6 +201,7 @@ export type Salad = {
     price: number;
     ingredients: IngredientProduct[];
     ingredientsExtra: IngredientProduct[];
+    type: "salad";
 };
 
 export type SidePage = {
@@ -222,6 +225,7 @@ export type Side = {
     isSauce: boolean;
     ingredients: IngredientProduct[];
     sauces: IngredientProduct[];
+    type: "side";
 };
 
 export type SandwichPage = {
@@ -248,6 +252,7 @@ export type Sandwich = {
     bread: Item;
     beverage: Beverage;
     side: Side;
+    type: "sandwich";
 };
 
 export type BurgerPage = {
@@ -282,6 +287,7 @@ export type Burger = {
     meatPoint: Item;
     beverage: Beverage;
     side: Side;
+    type: "burger";
 };
 
 export type RestaurantData = {

@@ -240,17 +240,44 @@ export const convertSandwichPage = (
     }, [] as SandwichPage[]);
 };
 
-export function convertSimpleModel(elements: DessertApp[], idRestaurant: string): Dessert[];
-export function convertSimpleModel(elements: BeverageApp[], idRestaurant: string): Beverage[];
-export function convertSimpleModel(
-    elements: BeverageApp[] | DessertApp[],
-    idRestaurant: string
-): Beverage[] | Dessert[] {
-    return elements
-        .map((el) => {
-            const resturantItem = getPriceRestaurant(el.restaurant, idRestaurant);
+type SimpleModelBeverageArgs = { elements: BeverageApp[]; idRestaurant: string; type: "beverage" };
+type SimpleModelDessertArgs = { elements: DessertApp[]; idRestaurant: string; type: "dessert" };
 
-            return resturantItem ? { id: el.id, name: el.name, slug: el.slug, price: resturantItem.price } : null;
-        })
-        .filter((el) => !!el) as Beverage[] | Dessert[];
-}
+export const convertSimpleModel = (args: SimpleModelBeverageArgs | SimpleModelDessertArgs) => {
+    if (args.type === "beverage") {
+        return args.elements
+            .map((el) => {
+                const resturantItem = getPriceRestaurant(el.restaurant, args.idRestaurant);
+
+                return resturantItem
+                    ? { id: el.id, name: el.name, slug: el.slug, price: resturantItem.price, type: "beverage" }
+                    : null;
+            })
+            .filter((el) => !!el) as Beverage[];
+    } else {
+        return args.elements
+            .map((el) => {
+                const resturantItem = getPriceRestaurant(el.restaurant, args.idRestaurant);
+
+                return resturantItem
+                    ? { id: el.id, name: el.name, slug: el.slug, price: resturantItem.price, type: "dessert" }
+                    : null;
+            })
+            .filter((el) => !!el) as Dessert[];
+    }
+};
+
+// export function convertSimpleModel(elements: DessertApp[], idRestaurant: string): Dessert[];
+// export function convertSimpleModel(elements: BeverageApp[], idRestaurant: string): Beverage[];
+// export function convertSimpleModel(
+//     elements: BeverageApp[] | DessertApp[],
+//     idRestaurant: string
+// ): Beverage[] | Dessert[] {
+//     return elements
+//         .map((el) => {
+//             const resturantItem = getPriceRestaurant(el.restaurant, idRestaurant);
+
+//             return resturantItem ? { id: el.id, name: el.name, slug: el.slug, price: resturantItem.price } : null;
+//         })
+//         .filter((el) => !!el) as Beverage[] | Dessert[];
+// }

@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import { AppData, RestaurantData } from "../types";
+import { AppData, RestaurantData, Dessert, Beverage } from "../types";
 
 import {
     convertSimpleModel,
@@ -24,8 +24,16 @@ export const useRestaurantData = (appData: AppData) => {
 
                 if (restaurant) {
                     const items = convertItem(appData.items, restaurant.id);
-                    const beverages = convertSimpleModel(appData.beverages, restaurant.id);
-                    const desserts = convertSimpleModel(appData.desserts, restaurant.id);
+                    const beverages = convertSimpleModel({
+                        elements: appData.beverages,
+                        idRestaurant: restaurant.id,
+                        type: "beverage",
+                    });
+                    const desserts = convertSimpleModel({
+                        elements: appData.desserts,
+                        idRestaurant: restaurant.id,
+                        type: "dessert",
+                    });
                     const ingredients = convertIngredient(appData.ingredients, restaurant.id);
                     const sidesPages = convertSidePage(appData.sides, restaurant.id, ingredients);
                     const saladsPages = convertSaladPage(appData.salads, restaurant.id, ingredients);
@@ -36,7 +44,7 @@ export const useRestaurantData = (appData: AppData) => {
                         appData.options,
                         items,
                         sidesPages,
-                        beverages
+                        beverages as Beverage[]
                     );
 
                     const burgersPages = convertBurgerPage(
@@ -46,13 +54,13 @@ export const useRestaurantData = (appData: AppData) => {
                         appData.options,
                         items,
                         sidesPages,
-                        beverages
+                        beverages as Beverage[]
                     );
 
                     setRestaurantData({
                         items,
-                        beverages,
-                        desserts,
+                        beverages: beverages as Beverage[],
+                        desserts: desserts as Dessert[],
                         ingredients,
                         sidesPages,
                         saladsPages,
