@@ -11,6 +11,7 @@ import {
     Category as CategoryAPI,
     Ingredient as IngredientAPI,
     AppDataQuery,
+    ComponentRestaurantSchedule,
 } from "../graphql/models";
 
 import { useRestaurantData } from "../hooks/useRestaurantData";
@@ -64,14 +65,16 @@ export type ComponentCommonRestaurant =
     | undefined;
 
 // ###############  Models APP ###############
+export type Schedule = Omit<ComponentRestaurantSchedule, "__typename" | "days"> & {
+    days: {
+        key: number;
+        day: string;
+    };
+};
 
 export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes"> & {
     id: string;
-    schedule: {
-        closing: string;
-        opening: string;
-        days: { day: string; key: number }[];
-    }[];
+    schedule: Schedule[];
     postalCodes: number[];
 };
 
