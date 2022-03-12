@@ -25,14 +25,9 @@ import {
     SidesQuery,
     ComponentCommonRestaurant,
     PriceRestaurant,
+    Schedule,
 } from "../types";
 import { BeverageEntity, IngredientEntity, ItemEntity, SideEntity } from "../graphql/models";
-
-type Schedule = {
-    closing: string;
-    opening: string;
-    days: { day: string; key: number }[];
-};
 
 // ################  COMPONENTS  ################
 

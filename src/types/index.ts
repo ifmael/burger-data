@@ -65,12 +65,17 @@ export type ComponentCommonRestaurant =
     | undefined;
 
 // ###############  Models APP ###############
-export type Schedule = Omit<ComponentRestaurantSchedule, "__typename" | "days"> & {
+export type Schedule = Omit<ComponentRestaurantSchedule, "__typename" | "days" | "id"> & {
     days: {
         key: number;
         day: string;
-    };
+    }[];
 };
+// export type Schedule = {
+//     closing: string;
+//     opening: string;
+//     days: { day: string; key: number }[];
+// };
 
 export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes"> & {
     id: string;
