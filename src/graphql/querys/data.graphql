@@ -270,6 +270,7 @@ query AppData {
                 isClose
                 postalCodes {
                     key
+                    name
                 }
                 slug
                 schedule {

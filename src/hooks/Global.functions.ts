@@ -26,6 +26,7 @@ import {
     ComponentCommonRestaurant,
     PriceRestaurant,
     Schedule,
+    PostalCode,
 } from "../types";
 import { BeverageEntity, IngredientEntity, ItemEntity, SideEntity } from "../graphql/models";
 
@@ -61,8 +62,8 @@ export const convertRestaurantApp = (restaurantCollection: RestaurantsQuery): Re
         restaurants = restaurantCollection.data.map(({ id, attributes }) => {
             const postalCodes = attributes?.postalCodes
                 ? attributes?.postalCodes?.reduce((acc, currentValue) => {
-                      return currentValue ? [...acc, currentValue.key] : acc;
-                  }, [] as number[])
+                      return currentValue ? [...acc, { key: currentValue.key, name: currentValue.name }] : acc;
+                  }, [] as PostalCode[])
                 : [];
             const schedule = attributes?.schedule
                 ? attributes?.schedule?.reduce((acc, currentValue) => {

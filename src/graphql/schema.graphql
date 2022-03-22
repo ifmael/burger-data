@@ -315,10 +315,12 @@ input ComponentItemRestaurantInput {
 type ComponentRestaurantPostalCode {
   id: ID!
   key: Int!
+  name: String!
 }
 
 input ComponentRestaurantPostalCodeFiltersInput {
   key: IntFilterInput
+  name: StringFilterInput
   and: [ComponentRestaurantPostalCodeFiltersInput]
   or: [ComponentRestaurantPostalCodeFiltersInput]
   not: ComponentRestaurantPostalCodeFiltersInput
@@ -327,6 +329,7 @@ input ComponentRestaurantPostalCodeFiltersInput {
 input ComponentRestaurantPostalCodeInput {
   id: ID
   key: Int
+  name: String
 }
 
 type ComponentRestaurantSchedule {

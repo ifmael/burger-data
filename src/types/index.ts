@@ -71,16 +71,15 @@ export type Schedule = Omit<ComponentRestaurantSchedule, "__typename" | "days" |
         day: string;
     }[];
 };
-// export type Schedule = {
-//     closing: string;
-//     opening: string;
-//     days: { day: string; key: number }[];
-// };
+export type PostalCode = {
+    key: number;
+    name: string;
+};
 
 export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes"> & {
     id: string;
     schedule: Schedule[];
-    postalCodes: number[];
+    postalCodes: PostalCode[];
 };
 
 export type BeverageApp = Omit<BeverageAPI, "restaurant" | "__typename"> & {
