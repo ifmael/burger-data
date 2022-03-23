@@ -19,7 +19,7 @@ export const useRestaurantData = (appData: AppData) => {
             try {
                 const { restaurants } = appData;
                 const restaurant = findBySlug
-                    ? restaurants.find(({ slug }) => slug === slug)
+                    ? restaurants.find(({ slug }) => slug === filter)
                     : restaurants.find(({ id }) => id === filter);
 
                 if (restaurant) {
