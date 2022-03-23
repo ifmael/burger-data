@@ -285,6 +285,10 @@ query AppData {
                         }
                     }
                 }
+                location {
+                    lat
+                    long
+                }
             }
         }
     }

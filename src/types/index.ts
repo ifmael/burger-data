@@ -12,6 +12,7 @@ import {
     Ingredient as IngredientAPI,
     AppDataQuery,
     ComponentRestaurantSchedule,
+    ComponentRestaurantLocation,
 } from "../graphql/models";
 
 import { useRestaurantData } from "../hooks/useRestaurantData";
@@ -76,10 +77,13 @@ export type PostalCode = {
     name: string;
 };
 
-export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes"> & {
+export type Location = Omit<ComponentRestaurantLocation, "id" | "__typename">;
+
+export type RestaurantApp = Omit<RestaurantAPI, "schedule" | "postalCodes" | "location"> & {
     id: string;
     schedule: Schedule[];
     postalCodes: PostalCode[];
+    location: Location;
 };
 
 export type BeverageApp = Omit<BeverageAPI, "restaurant" | "__typename"> & {

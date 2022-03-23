@@ -312,6 +312,18 @@ input ComponentItemRestaurantInput {
   available: Boolean
 }
 
+type ComponentRestaurantLocation {
+  id: ID!
+  lat: Float
+  long: Float
+}
+
+input ComponentRestaurantLocationInput {
+  id: ID
+  lat: Float
+  long: Float
+}
+
 type ComponentRestaurantPostalCode {
   id: ID!
   key: Int!
@@ -578,7 +590,7 @@ input FloatFilterInput {
   between: [Float]
 }
 
-union GenericMorph = ComponentBeverageRestaurant | ComponentBurguerRestaurant | ComponentDessertRestaurant | ComponentIngredientRestaurant | ComponentItemRestaurant | ComponentRestaurantPostalCode | ComponentRestaurantSchedule | ComponentSaladRestaurant | ComponentSandwichRestaurants | ComponentSideRestaurant | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Beverage | Burger | Category | Day | Dessert | Ingredient | Item | Option | Restaurant | Salad | Sandwich | Side
+union GenericMorph = ComponentBeverageRestaurant | ComponentBurguerRestaurant | ComponentDessertRestaurant | ComponentIngredientRestaurant | ComponentItemRestaurant | ComponentRestaurantLocation | ComponentRestaurantPostalCode | ComponentRestaurantSchedule | ComponentSaladRestaurant | ComponentSandwichRestaurants | ComponentSideRestaurant | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Beverage | Burger | Category | Day | Dessert | Ingredient | Item | Option | Restaurant | Salad | Sandwich | Side
 
 type I18NLocale {
   name: String
@@ -987,6 +999,7 @@ type Restaurant {
   schedule(filters: ComponentRestaurantScheduleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantSchedule]
   postalCodes(filters: ComponentRestaurantPostalCodeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentRestaurantPostalCode]
   slug: String!
+  location: ComponentRestaurantLocation!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -1029,6 +1042,7 @@ input RestaurantInput {
   schedule: [ComponentRestaurantScheduleInput]
   postalCodes: [ComponentRestaurantPostalCodeInput]
   slug: String
+  location: ComponentRestaurantLocationInput
 }
 
 type Salad {

@@ -86,8 +86,11 @@ export const convertRestaurantApp = (restaurantCollection: RestaurantsQuery): Re
                           : acc;
                   }, [] as Schedule[])
                 : [];
+            const location = attributes?.location
+                ? { lat: attributes.location.lat ?? 0, long: attributes.location.long ?? 0 }
+                : { lat: 0, long: 0 };
 
-            const restaurant = {
+            const restaurant: RestaurantApp = {
                 id: id ?? "",
                 name: attributes?.name ?? "",
                 address: attributes?.address ?? "",
@@ -97,6 +100,7 @@ export const convertRestaurantApp = (restaurantCollection: RestaurantsQuery): Re
                 isClose: !!attributes?.isClose,
                 postalCodes,
                 schedule,
+                location,
             };
             return restaurant;
         });
